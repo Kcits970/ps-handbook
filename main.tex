@@ -1,0 +1,63 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage{kotex}
+\usepackage{indentfirst}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{geometry}
+\usepackage{tcolorbox}
+\usepackage{ifthen}
+\usepackage[hidelinks,colorlinks=true,linkcolor=magenta,citecolor=magenta,urlcolor=blue]{hyperref}
+\geometry{margin=25mm}
+
+\usepackage{tikz}
+
+\newcommand{\myalgorithm}[4]
+{
+    \section{#1}
+
+    \ifthenelse{\equal{#2}{}}{}{Reference: \texttt{\scriptsize\url{#2}}}
+
+    \ifthenelse{\equal{#2}{}}{}{Implementation: \texttt{#3}}
+
+    \input{#4}
+}
+
+\DeclareMathOperator{\dist}{dist}
+
+\begin{document}
+    \begin{center}
+        {\Large\textbf{Kcits970 Problem Solving Handbook}}
+    \end{center}
+
+    When I learn algorithms/techniques, I often forget their correctness proofs. This handbook contains all algorithms that I have learned, but forgotten the proofs for.
+
+    \myalgorithm{Strongly Connected Component}
+    {https://cp-algorithms.com/graph/strongly-connected-components.html}
+    {./code/graph/scc.cpp}
+    {./doc/graph/scc.tex}
+
+    \myalgorithm{Cross Product of 2D Vectors}
+    {}
+    {}
+    {./doc/geom/cprod.tex}
+
+    \myalgorithm{Orientation of 3 Points}
+    {}
+    {./code/geom/isect.cpp}
+    {./doc/geom/ccw.tex}
+
+    \myalgorithm{Line Segment Intersection Check}
+    {}
+    {./code/geom/isect.cpp}
+    {./doc/geom/isect.tex}
+
+    \myalgorithm{Diameter of a Tree}
+    {https://codeforces.com/blog/entry/101271}
+    {./code/tree/diam.cpp}
+    {./doc/tree/diam.tex}
+
+\end{document}

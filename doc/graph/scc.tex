@@ -1,0 +1,19 @@
+\begin{tcolorbox}
+    \begin{enumerate}
+        \item Given a directed graph $G$, construct its transpose $H$.
+        \item Sort the vertices of $G$ in the order of dfs exit time.
+        \item Find an \emph{unvisited} vertex $u$ with the greatest exit time, and collect all \emph{unvisited} vertices reachable from $u$ in $H$.
+        \item Repeat the above until all vertices are \emph{visited}.
+    \end{enumerate}
+\end{tcolorbox}
+
+Consider two different strongly connected components $S$ and $T$ in $G$. If there exists an edge from $S$ to $T$ in the condensation graph $C$, the dfs exit time of $S$ must be greater than that of $T$. This can be proven by splitting the dfs entry order into two cases. {\scriptsize (The rest is kind of trivial, so it is omitted here.)}
+
+\[
+\begin{cases}
+    \text{1. $S$ is visited first.} \cdots \\
+    \text{2. $T$ is visited first.} \cdots \\
+\end{cases}
+\]
+
+Therefore, the strongly connected component containing $u$ (the vertex with the greatest exit time) must not have any incoming edges from other strongly connected components in $G$. Hence, by collecting all vertices reachable from $u$ in the transpose, we end up with a strongly connected component. {\scriptsize (This is valid because the set of all strongly connected components of $G$ is equal to that of $H$.)} Thus, repeating until exhaustion must correctly find all strongly connected components.

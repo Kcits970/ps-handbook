@@ -1,0 +1,37 @@
+\begin{tcolorbox}
+    \begin{enumerate}
+        \item Let $\mathbf{u} = (a, b)$, $\mathbf{v} = (c, d)$, and $\theta$ be the angle from $\mathbf{u}$ to $\mathbf{v}$ measured in counterclockwise direction. $(0 \leq \theta < 2\pi)$
+        \item The signed area of the parallelogram formed by $\mathbf{u}$ and $\mathbf{v}$ is equal to $ad-bc$, and is notated as $\mathbf{u} \times \mathbf{v}$.
+    \end{enumerate}
+\end{tcolorbox}
+
+It suffices to show that $ad-bc = |\mathbf{u}||\mathbf{v}|\sin\theta$. First, we use the rotation matrix to find a different expression for $\mathbf{v}$.
+
+\begin{equation*}
+    \mathbf{v}
+    = \sqrt{\frac{c^2+d^2}{a^2+b^2}}
+    \begin{pmatrix}
+        \cos\theta & -\sin\theta \\
+        \sin\theta & \cos\theta
+    \end{pmatrix}
+    \begin{pmatrix}
+        a \\
+        b
+    \end{pmatrix}
+    = \sqrt{\frac{c^2+d^2}{a^2+b^2}}
+    \begin{pmatrix}
+        a\cos\theta - b\sin\theta \\
+        a\sin\theta + b\cos\theta
+    \end{pmatrix}
+\end{equation*}
+
+Then we calculate $ad-bc$ using the alternate expression.
+
+\begin{align*}
+    ad-bc = {}& \sqrt{\frac{c^2+d^2}{a^2+b^2}}(a(a\sin\theta + b\cos\theta) - b(a\cos\theta - b\sin\theta)) \\
+    = {}& \sqrt{\frac{c^2+d^2}{a^2+b^2}}(a^2\sin\theta + b^2\sin\theta) \\
+    = {}& \sqrt{a^2+b^2}\sqrt{c^2+d^2}\sin\theta \\
+    = {}& |\mathbf{u}||\mathbf{v}|\sin\theta
+\end{align*}
+
+This fact implies that $\mathbf{v}$ is oriented counterclockwise to $\mathbf{u}$ if $\mathbf{u} \times \mathbf{v}$ is positive, and clockwise if $\mathbf{u} \times \mathbf{v}$ is negative. The cross product of zero indicates that the two vectors are parallel to each other.

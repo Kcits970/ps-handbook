@@ -1,0 +1,37 @@
+{\scriptsize If the weights can be negative, then this algorithm does not work in the general case.}
+
+\begin{tcolorbox}
+    \begin{enumerate}
+        \item Let $T$ be a given tree with non-negative weights, and $p$ be an arbitrary node on $T$.
+        \item Let $a$ be any farthest node from $p$.
+        \item Let $b$ be any farthest node from $a$.
+        \item The path from $a$ to $b$ is one of the diameters of $T$.
+    \end{enumerate}
+\end{tcolorbox}
+
+Let $P$ denote the path from $a$ to $b$. For each vertex $v$, define $r_v$ as the first \emph{reachable} vertex on $P$ from $v$. First, we show that for every vertex $v$, $\dist(r_v, v) \leq \dist(r_v, b)$. By definition of $b$, $\dist(a, v) \leq \dist(a, b)$. Subtracting $\dist(a, r_v)$ on both sides immediately yields $\dist(r_v, v) \leq \dist(r_v, b)$.
+
+\medskip
+
+Next, we proceed to show $\dist(r_v, v) \leq \dist(r_v, a)$ for every vertex $v$. Given an arbitrary $v$, the position of $r_v$ splits into two cases.
+
+\[
+\begin{cases}
+    \text{$r_v$ exists on the path from $a$ (\emph{inclusive}) to $r_p$ (\emph{exclusive}).} \\
+    \text{$r_v$ exists on the path from $r_p$ (\emph{inclusive}) to $b$ (\emph{inclusive}).} \\
+\end{cases}
+\]
+
+In the former case, $\dist(r_v, v) \leq \dist(r_v, a)$ must hold, because otherwise it contradicts the fact that $a$ is farthest from $p$. In the latter case, $\dist(r_v, b) \leq \dist(r_v, a)$, because otherwise $b$ is farther away from $p$ than $a$. Combining this with the previously derived inequality $\dist(r_v, v) \leq \dist(r_v, b)$ returns $\dist(r_v, v) \leq \dist(r_v, a)$.
+
+\medskip
+
+Finally, we show that $\dist(u, v) \leq \dist(a, b)$ for every pair of vertices $u$ and $v$. Without loss of generality, assume that $r_u$ exists on the path from $a$ to $r_v$.
+
+\begin{align*}
+    \dist(u, v) \leq {}& \dist(u, r_u) + \dist(r_u, r_v) + \dist(r_v, v) \\
+    \leq {}& \dist(a, r_u) + \dist(r_u, r_v) + \dist(r_v, b) \\
+    = {}& \dist(a, b)
+\end{align*}
+
+We have proven that $\dist(a, b)$ is greater than or equal to every $\dist(u, v)$; hence the algorithm correctly finds the diameter of $T$.

@@ -1,0 +1,16 @@
+\begin{tcolorbox}
+    \begin{enumerate}
+        \item Let $A$, $B$, $C$, $D$ be arbitrary \emph{distinct} points on a plane.
+        \item If $A$, $B$, $C$ and $A$, $B$, $D$ are oriented in the same direction, then $\overline{AB}$ and $\overline{CD}$ do not intersect.
+        \item The same argument applies to the orientations of $C$, $D$, $A$ and $C$, $D$, $B$.
+        \item If the four points are on a line, then the two segments intersect if and only if one of the following conditions hold.
+        \begin{itemize}
+            \item The rightmost endpoint of $\overline{AB}$ is to the right of the leftmost endpoint of $\overline{CD}$.
+            \item The leftmost endpoint of $\overline{AB}$ is to the left of the rightmost endpoint of $\overline{CD}$.
+            \item The uppermost endpoint of $\overline{AB}$ is above the lowermost endpoint of $\overline{CD}$.
+            \item The lowermost endpoint of $\overline{AB}$ is below the uppermost endpoint of $\overline{CD}$.
+        \end{itemize}
+    \end{enumerate}
+\end{tcolorbox}
+
+The correctness of this algorithm can be shown visually, {\scriptsize but I don't really want to write a dedicated TikZ diagram for it.} Also, it should be noted that when implementing the algorithm, the usage of $<$, $\leq$, $>$, $\geq$ may depend on how the problem sets the condition for an \emph{intersection}.
