@@ -1,0 +1,20 @@
+\begin{tcolorbox}
+    \begin{enumerate}
+        \item Let $A$ be the given sequence of length $n$.
+        \item Let $f = (A_1, \underbrace{\infty, \infty, \infty, \cdots, \infty}_{n-1})$.
+        \item For each $i$ from $2$ to $n$, binary search the smallest $l$ such that $a_i \leq f_l$ and update $f_l$ to $A_i$.
+        \item The largest $l$ such that $f_l < \infty$ is the length of the longest increasing subsequence of $A$.
+    \end{enumerate}
+\end{tcolorbox}
+
+Define $g_{i, l}$ as the smallest terminal element across all increasing subsequences of length $l$ within the $i$th prefix of $A$. We show that in the above algorithm, $f_l$ is equal to $g_{i, l}$ after the $i$th iteration. {\scriptsize (Then the rest of the correctness should be trivial.)} Notice the following recurrence relation of $g$.
+
+\[
+g_{i, l} = 
+\begin{cases}
+    A_i & (g_{i-1, l-1} < A_i \leq g_{i-1, l}) \\
+    g_{i-1, l} & (\text{otherwise})
+\end{cases}
+\]
+
+Additionally, for all $i$, $g_{i, l}$ must be strictly increasing in respect to $l$. This is because if $g_{i, l-1} \geq g_{i, l}$, we can obtain an increasing subsequence of length $l-1$ with a terminal element smaller than $g_{i, l-1}$. Therefore, for all $A_i$, there exists exactly one $l$ such that $g_{i-1, l-1} < A_i \leq g_{i-1, l}$, and the recurrence relation of $g$ matches exactly the operations being done on $f$. Since the initial state of $f$ is equal to $g_{1, l}$ (trivially), the principle of induction tells us that $f$ after the $i$th iteration equals $g_{i, l}$.
