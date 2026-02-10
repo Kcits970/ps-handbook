@@ -9,3 +9,5 @@ When I learn algorithms for computational problem solving, I often forget their 
 4. Orientation of 3 Points
 5. Line Segment Intersection Check
 6. Diameter of a Tree
+
+*The handbook is new, and is actively being updated. More algorithms will be included soon.*
