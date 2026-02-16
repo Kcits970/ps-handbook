@@ -1,0 +1,64 @@
+\begin{tcolorbox}
+    \begin{enumerate}
+        \item Consider the system of modular equations given as below.
+        \[
+        \begin{cases}
+            x \equiv a \pmod{m} \\
+            x \equiv b \pmod{n}
+        \end{cases}
+        \]
+        \item Let $g = \gcd(m, n)$. If $g \nmid a - b$, then no solutions exist.
+        \item Let $u$, $v$ be any pair of B\'{e}zout coefficients for $m$, $n$.
+        \item $x = a-\frac{a-b}{g}mu$ is the unique solution in modulo $\lcm(m, n)$.
+    \end{enumerate}
+\end{tcolorbox}
+
+We first show the correctness of the gcd divisibility condition. From the above modular equations, we derive the following.
+
+\begin{equation*}
+    \begin{cases*}
+        x \equiv a \pmod{m} \\
+        x \equiv b \pmod{n}
+    \end{cases*}
+    \longrightarrow
+    \begin{cases*}
+        m \mid x - a \\
+        n \mid x - b
+    \end{cases*}
+    \longrightarrow
+    \begin{cases*}
+        g \mid x - a \\
+        g \mid x - b
+    \end{cases*}
+    \longrightarrow
+    \begin{cases*}
+        x \equiv a \pmod{g} \\
+        x \equiv b \pmod{g}
+    \end{cases*}
+\end{equation*}
+
+From here, it is trivial that no solutions for $x$ exist if $a$ is not congruent to $b$ in modulo $g$. Hence, $g$ must divide $a-b$ in order for a solution to exist.
+
+\medskip
+
+If $g$ divides $a-b$, then a solution can be constructed.
+\begin{align*}
+    {}& mu + nv = g \\
+    \longrightarrow {}& \frac{a-b}{g}mu + \frac{a-b}{g}nv = a-b \\
+    \longrightarrow {}& a-\frac{a-b}{g}mu = b+\frac{a-b}{g}nv
+\end{align*}
+
+Let $a-\frac{a-b}{g}mu = b+\frac{a-b}{g}nv = x_0$. Clearly, $x_0$ is congruent to $a$, $b$ in modulo $m$, $n$, respectively. Furthermore, this solution is unique in modulo $\lcm(m, n)$. Assume the existence of another solution $x_1$. Then $x_0$ must be congruent to $x_1$ in both modulo $m$ and $n$, implying modular congruence in $\lcm(m, n)$ as well. The exact derivation is shown below.
+\begin{align*}
+    \begin{cases*}
+        x_0 \equiv x_1 \pmod{m} \\
+        x_0 \equiv x_1 \pmod{n}
+    \end{cases*}
+    \longrightarrow {}&
+    \begin{cases*}
+        m \mid x_0 - x_1 \\
+        n \mid x_0 - x_1
+    \end{cases*} \\
+    \longrightarrow {}& \lcm(m, n) \mid x_0 - x_1 \\
+    \longrightarrow {}& x_0 \equiv x_1 \pmod{\lcm(m, n)}
+\end{align*}
