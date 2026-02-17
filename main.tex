@@ -13,15 +13,13 @@
 \usepackage[hidelinks,colorlinks=true,linkcolor=magenta,citecolor=magenta,urlcolor=blue]{hyperref}
 \geometry{margin=25mm}
 
-\usepackage{tikz}
-
 \newcommand{\myalgorithm}[4]
 {
     \section{#1}
 
     \ifthenelse{\equal{#2}{}}{}{Reference: \texttt{\scriptsize\url{#2}}}
 
-    \ifthenelse{\equal{#2}{}}{}{Implementation: \texttt{#3}}
+    \ifthenelse{\equal{#3}{}}{}{Implementation: \texttt{#3}}
 
     \input{#4}
 }
@@ -53,13 +51,18 @@
 
     \myalgorithm{Orientation of 3 Points}
     {}
-    {./code/geom/isect.cpp}
+    {./code/geom/ccw.cpp}
     {./doc/geom/ccw.tex}
 
     \myalgorithm{Line Segment Intersection Check}
     {}
     {./code/geom/isect.cpp}
     {./doc/geom/isect.tex}
+
+    \myalgorithm{Convex Hull}
+    {https://cp-algorithms.com/geometry/convex-hull.html}
+    {./code/geom/cvxh.cpp}
+    {./doc/geom/cvxh.tex}
 
     \myalgorithm{Diameter of a Tree}
     {https://codeforces.com/blog/entry/101271}

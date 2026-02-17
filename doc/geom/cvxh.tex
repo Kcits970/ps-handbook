@@ -1,0 +1,13 @@
+{\scriptsize This algorithm is also called \emph{Graham scan}.}
+
+\begin{tcolorbox}
+    \begin{enumerate}
+        \item Given a set of points $S$, let $P_0 \in S$ be the point with the smallest $x$-value. (If there are multiple, select the one with the smallest $y$-value.)
+        \item Sort the points of $S$ with respect to the polar angle from $P_0$, with $P_0$ being first in order. (If multiple points have the same angle, break ties by amplitude.)
+        \item Maintain a stack $H$ to keep the points of the convex hull.
+        \item Let $a$, $b$ denote the two topmost points of $H$. For each point $v$ in $S$, pop $H$ while $b$, $a$, $v$ are not oriented in counterclockwise order, then push $v$ into $H$.
+        \item $H$ contains the points of the convex hull in counterclockwise order.
+    \end{enumerate}
+\end{tcolorbox}
+
+It can be shown by induction that after the $i$th iteration, $H$ contains the points of the convex hull of the first $i$ points in counterclockwise order. To visualize the induction argument, one can imagine a ray from $P_0$ rotating in counterclockwise direction.
